@@ -7,4 +7,39 @@
     android:orientation="vertical"
     tools:context=".AddPhotoActivity">
 
+    <EditText
+        android:id="@+id/addPhotoEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
+
+    <ImageView
+        android:id="@+id/addPhotoImageView"
+        android:layout_width="match_parent"
+        android:layout_height="298dp"
+        android:layout_weight="8"
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/addPhotoOpenButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Open" />
+
+        <Button
+            android:id="@+id/addPhotoSaveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Save" />
+    </LinearLayout>
 </LinearLayout>
