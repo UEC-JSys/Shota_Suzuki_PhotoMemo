@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 
 class AddPhotoActivity : AppCompatActivity() {
     private val pickPhotoReuestCode = 2
@@ -13,7 +14,7 @@ class AddPhotoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_photo)
 
-    val openButton: Button = findViewById(R.id.addPhotoMemoOpenButton)
+    val openButton: Button = findViewById(R.id.addPhotoOpenButton)
         openButton.setOnClickListener{
             val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply{
                 addCategory(Intent.CATEGORY_OPENABLE)
@@ -28,7 +29,7 @@ class AddPhotoActivity : AppCompatActivity() {
 
         if (requestCode == pickPhotoReuestCode && resultCode == Activity.RESULT_OK){
             data?.data?.let{
-                val imageView = findViewById<ImageView>(R.id.addPhotoMemoImageView)
+                val imageView = findViewById<ImageView>(R.id.addPhotoImageView)
                 imageView.setImageURI(it)
             }
         }
