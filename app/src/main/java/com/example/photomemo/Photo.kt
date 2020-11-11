@@ -9,7 +9,7 @@ import androidx.room.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Entity(tableName = 'photo_table')
+@Entity(tableName = "photo_table")
 data class Photo (
         @PrimaryKey @ColumnInfo(name = "uri") val uri: String,
         @ColumnInfo(name = "memo") val memo: String

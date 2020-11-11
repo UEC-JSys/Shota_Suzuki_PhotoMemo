@@ -29,6 +29,8 @@ class AddPhotoActivity : AppCompatActivity() {
     saveButton.setOnClickListener {
         val editText = findViewById<EditText>( R.id.addPhotoEditText)
         val replyIntent = Intent()
+        val imageUri = findViewById<ImageView>(R.id.addPhotoImageView)
+        val viewModel = AddPhotoViewModel(application)
         if (imageUri == null || TextUtils.isEmpty(editText.text)) {
             setResult(Activity.RESULT_CANCELED, replyIntent)
         } else {
