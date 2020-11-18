@@ -1,4 +1,4 @@
-package com.example.photomemo
+package com.example.photomemo.View
 
 import android.app.Activity
 import android.content.Intent
@@ -9,9 +9,13 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.lifecycle.ViewModelProvider
+import com.example.photomemo.AddPhotoViewModel
+import com.example.photomemo.Photo
+import com.example.photomemo.R
 
 class AddPhotoActivity : AppCompatActivity() {
     private val pickPhotoReuestCode = 2
+    private lateinit var viewModel: AddPhotoViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,10 +32,10 @@ class AddPhotoActivity : AppCompatActivity() {
 
     val saveButton: Button = findViewById(R.id.addPhotoSaveButton)
     saveButton.setOnClickListener {
-        val editText = findViewById<EditText>( R.id.addPhotoEditText)
+        val editText = findViewById<EditText>(R.id.addPhotoEditText)
         val replyIntent = Intent()
         val imageUri = findViewById<ImageView>(R.id.addPhotoImageView)
-        val viewModel = ViewModelProvider(this).get(PhotoViewModel::class.java)
+        val viewModel = ViewModelProvider(this).get(AddPhotoViewModel::class.java)
         if (imageUri == null || TextUtils.isEmpty(editText.text)) {
             setResult(Activity.RESULT_CANCELED, replyIntent)
         } else {

@@ -1,4 +1,4 @@
-package com.example.photomemo
+package com.example.photomemo.View
 
 import android.app.Activity
 import android.app.Application
@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.photomemo.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
