@@ -8,6 +8,7 @@ import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import androidx.lifecycle.ViewModelProvider
 
 class AddPhotoActivity : AppCompatActivity() {
     private val pickPhotoReuestCode = 2
@@ -30,7 +31,7 @@ class AddPhotoActivity : AppCompatActivity() {
         val editText = findViewById<EditText>( R.id.addPhotoEditText)
         val replyIntent = Intent()
         val imageUri = findViewById<ImageView>(R.id.addPhotoImageView)
-        val viewModel = AddPhotoViewModel(application)
+        val viewModel = ViewModelProvider(this).get(PhotoViewModel::class.java)
         if (imageUri == null || TextUtils.isEmpty(editText.text)) {
             setResult(Activity.RESULT_CANCELED, replyIntent)
         } else {
