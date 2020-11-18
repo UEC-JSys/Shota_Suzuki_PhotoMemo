@@ -13,6 +13,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.photomemo.*
+import com.example.photomemo.Model.Photo
+import com.example.photomemo.Model.PhotoRepository
+import com.example.photomemo.Model.PhotoRoomDatabase
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
@@ -55,13 +58,3 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-class PhotoViewModel(application: Application) : AndroidViewModel(application) {
-    private val repository: PhotoRepository
-    val allPhotos: LiveData<List<Photo>>
-
-    init {
-        val photoDao = PhotoRoomDatabase.getPhotoDatabase(application).photoDao()
-        repository = PhotoRepository(photoDao)
-        allPhotos = repository.allPhotos
-    }
-}

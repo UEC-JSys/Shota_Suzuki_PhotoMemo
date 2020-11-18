@@ -1,8 +1,11 @@
-package com.example.photomemo
+package com.example.photomemo.ViewModel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.photomemo.Model.Photo
+import com.example.photomemo.Model.PhotoRepository
+import com.example.photomemo.Model.PhotoRoomDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
