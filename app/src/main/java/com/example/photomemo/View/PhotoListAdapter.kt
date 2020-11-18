@@ -1,6 +1,8 @@
 package com.example.photomemo.View
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.location.GnssAntennaInfo
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
@@ -11,11 +13,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.photomemo.Model.Photo
 import com.example.photomemo.R
 
-class PhotoListAdapter internal constructor(context: Context)
+class PhotoListAdapter internal constructor(context: Context, listener: Listener)
     : RecyclerView.Adapter<PhotoListAdapter.PhotoViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
-    private var photos = emptyList<Photo>()
+    private var photos = emptyList<Pair<Photo, Bitmap?>>()
+    private val clickListener: Listener = listener
 
     inner class PhotoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val photoItemView: ImageView = itemView.findViewById(R.id.imageView)
@@ -29,8 +32,15 @@ class PhotoListAdapter internal constructor(context: Context)
 
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
         val current = photos[position]
-        holder.memoItemView.text = current.memo
-        holder.photoItemView.setImageURI(Uri.parse(current.uri))
+        holder.memoItemView.text = current.first.memo
+        if (current.second != null) {
+            holder.photoItemView.setImageBitmap(current.second)
+        } else {
+            holder.photoItemView.setImageURI(Uri.parse(current.first.uri))
+        }
+        holder.itemView.setOnClickListener {
+            clickListener.onItemClicked(holder.adapterPosition)
+        }
     }
 
     internal fun setPhotos(photos: List<Photo>) {
@@ -40,4 +50,7 @@ class PhotoListAdapter internal constructor(context: Context)
 
     override fun getItemCount() = photos.size
 
+    interface Listener {
+        fun onItemClicked(index: Int)
+    }
 }
